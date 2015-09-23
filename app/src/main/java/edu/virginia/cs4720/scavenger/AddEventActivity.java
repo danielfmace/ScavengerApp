@@ -1,25 +1,25 @@
 package edu.virginia.cs4720.scavenger;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+public class AddEventActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_add_event);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_add_event, menu);
         return true;
     }
 
@@ -38,34 +38,20 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    public void startService(View view) {
-        Intent intent = new Intent(this, GPSService.class);
-        startService(intent);
-    }
-
-    public void stopService(View view) {
-        Intent intent = new Intent(this, GPSService.class);
-        stopService(intent);
-    }
-
-    public void addEvent(View view) {
-        Intent intent = new Intent(this, AddEventActivity.class);
-        startActivity(intent);
-    }
-
-    /*public void addEvent(View view) {
-        EditText name = (EditText) findViewById(R.id.nameEditText);
-        EditText description = (EditText) findViewById(R.id.descriptionEditText);
+    public void addNewEvent(View view) {
+        EditText title = (EditText) findViewById(R.id.titleEditText);
         EditText date = (EditText) findViewById(R.id.dateEditText);
         EditText time = (EditText) findViewById(R.id.timeEditText);
+        EditText location = (EditText) findViewById(R.id.locationEditText);
+        EditText description = (EditText) findViewById(R.id.descriptionEditText);
 
         Intent intent = new Intent(this, NewEventActivity.class);
-        intent.putExtra("name", name.getText().toString());
-        intent.putExtra("description", description.getText().toString());
+        intent.putExtra("title", title.getText().toString());
         intent.putExtra("date", date.getText().toString());
         intent.putExtra("time", time.getText().toString());
+        intent.putExtra("description", description.getText().toString());
+        intent.putExtra("location", location.getText().toString());
 
         startActivity(intent);
-    }*/
+    }
 }

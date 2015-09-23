@@ -27,7 +27,7 @@ public class NewEventActivity extends AppCompatActivity {
         dateTextView = (TextView) findViewById(R.id.dateTextView);
         timeTextView = (TextView) findViewById(R.id.timeTextView);
 
-        nameTextView.setText((String) b.get("name"));
+        nameTextView.setText((String) b.get("title"));
         descriptionTextView.setText((String) b.get("description"));
         dateTextView.setText((String) b.get("date"));
         timeTextView.setText((String) b.get("time"));
