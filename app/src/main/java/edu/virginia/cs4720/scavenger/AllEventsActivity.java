@@ -5,39 +5,25 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
 
-public class NewEventActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    private TextView nameTextView;
-    private TextView descriptionTextView;
-    private TextView dateTextView;
-    private TextView timeTextView;
+public class AllEventsActivity extends AppCompatActivity {
+
+    private ArrayList<Event> events;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_event);
-
-        Intent in = getIntent();
-        Bundle b = in.getExtras();
-
-        nameTextView = (TextView) findViewById(R.id.nameTextView);
-        descriptionTextView = (TextView) findViewById(R.id.descriptionTextView);
-        dateTextView = (TextView) findViewById(R.id.dateTextView);
-        timeTextView = (TextView) findViewById(R.id.timeTextView);
-
-        nameTextView.setText("Name: " + b.get("name"));
-        descriptionTextView.setText("Description: " + b.get("description"));
-        dateTextView.setText("Date: " + b.get("date"));
-        timeTextView.setText("Time: " + b.get("time"));
-
+        setContentView(R.layout.activity_all_events);
+        events = new ArrayList<>();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_new_event, menu);
+        getMenuInflater().inflate(R.menu.menu_all_events, menu);
         return true;
     }
 
@@ -54,5 +40,12 @@ public class NewEventActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void createEvent(View view) {
+
+        Intent intent = new Intent(this, MainActivity.class);
+
+        startActivity(intent);
     }
 }
